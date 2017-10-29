@@ -4,8 +4,20 @@
 [[projects]]
   branch = "master"
   name = "github.com/golang/protobuf"
-  packages = ["proto","ptypes","ptypes/any","ptypes/duration","ptypes/timestamp"]
+  packages = ["jsonpb","proto","protoc-gen-go/descriptor","ptypes","ptypes/any","ptypes/duration","ptypes/struct","ptypes/timestamp"]
   revision = "1643683e1b54a9e88ad26d98f81400c8c9d9f4f9"
+
+[[projects]]
+  name = "github.com/grpc-ecosystem/grpc-gateway"
+  packages = ["runtime","runtime/internal","utilities"]
+  revision = "589b126116b5fc961939b3e156c29e4d9d58222f"
+  version = "v1.2.2"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/terut/grpc-sample"
+  packages = ["proto"]
+  revision = "e38c2f97443341deb22c2e9803467011a2d9eb54"
 
 [[projects]]
   branch = "master"
@@ -22,7 +34,7 @@
 [[projects]]
   branch = "master"
   name = "google.golang.org/genproto"
-  packages = ["googleapis/rpc/status"]
+  packages = ["googleapis/api/annotations","googleapis/rpc/status"]
   revision = "f676e0f3ac6395ff1a529ae59a6670878a8371a6"
 
 [[projects]]
@@ -34,6 +46,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "1fc2407c8569fa7e5adf92afc1a5fd585314f16ac963cac91e7647926b814f6f"
+  inputs-digest = "c0f2b134a2244e3513c3bbce840a0dd12024ef399fbeebbcfabe4364554b29a3"
   solver-name = "gps-cdcl"
   solver-version = 1
