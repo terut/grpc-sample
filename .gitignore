@@ -1,0 +1,5 @@
+vendor
+*.swp
+
+*.pb.go
+*.gw.go
