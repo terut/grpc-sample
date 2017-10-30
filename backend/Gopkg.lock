@@ -17,7 +17,7 @@
   branch = "master"
   name = "github.com/terut/grpc-sample"
   packages = ["proto"]
-  revision = "e38c2f97443341deb22c2e9803467011a2d9eb54"
+  revision = "0907b72f0933d2aab09be75a57603004b4b2439d"
 
 [[projects]]
   branch = "master"

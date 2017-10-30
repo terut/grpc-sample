@@ -18,9 +18,9 @@ func main() {
 	opts := []grpc.DialOption{grpc.WithInsecure()}
 	err := gw.RegisterUserHandlerFromEndpoint(ctx, mux, "localhost:9090", opts)
 	if err != nil {
-		log.Pritnln("failed to register endpoint")
+		log.Println("failed to register endpoint")
 	}
 	if err := http.ListenAndServe(":8080", mux); err != nil {
-		log.Pritnln("failed to register endpoint")
+		log.Println("failed to register endpoint")
 	}
 }
