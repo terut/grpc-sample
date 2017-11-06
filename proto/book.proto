@@ -1,0 +1,22 @@
+syntax = "proto3";
+package book;
+
+import "google/api/annotations.proto";
+
+service Book {
+  rpc Get(BookRequest) returns (BookRequest) {
+	  option (google.api.http) = {
+		  get:  "/v1/books/{id}"
+		};
+	}
+}
+
+message BookRequest {
+  int64 id = 1;
+}
+
+message BookResponse {
+  int64 id = 1;
+	string author = 2;
+	string title = 3;
+}
