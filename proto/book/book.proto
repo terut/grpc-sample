@@ -17,6 +17,6 @@ message BookRequest {
 
 message BookResponse {
   int64 id = 1;
-	string author = 2;
+	int64 author = 2;
 	string title = 3;
 }
