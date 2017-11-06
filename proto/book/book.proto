@@ -4,7 +4,7 @@ package book;
 import "google/api/annotations.proto";
 
 service Book {
-  rpc Get(BookRequest) returns (BookRequest) {
+  rpc Get(BookRequest) returns (BookResponse) {
 	  option (google.api.http) = {
 		  get:  "/v1/books/{id}"
 		};
