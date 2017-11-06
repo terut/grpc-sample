@@ -7,7 +7,8 @@ import (
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 
-	pb "github.com/terut/grpc-sample/proto"
+	pbbook "github.com/terut/grpc-sample/proto/book"
+	pbuser "github.com/terut/grpc-sample/proto/user"
 )
 
 const (
@@ -16,9 +17,16 @@ const (
 
 type userService struct{}
 
-func (s *userService) Get(ctx context.Context, in *pb.UserRequest) (*pb.UserResponse, error) {
-	log.Println("requested id: ", in.Id)
-	return &pb.UserResponse{Id: 1, Username: "terut"}, nil
+func (s *userService) Get(ctx context.Context, in *pbuser.UserRequest) (*pbuser.UserResponse, error) {
+	log.Println("requested user_id: ", in.Id)
+	return &pbuser.UserResponse{Id: 1, Username: "terut"}, nil
+}
+
+type bookService struct{}
+
+func (b *bookService) Get(ctx context.Context, in *pbbook.BookRequest) (*pbbook.BookResponse, error) {
+	log.Println("requested book_id: ", in.Id)
+	return &pbbook.BookResponse{Id: 1, Author: 1, Title: "REST with gRPC"}, nil
 }
 
 func main() {
@@ -27,7 +35,8 @@ func main() {
 		log.Fatalf("failed to listen: %v", err)
 	}
 	s := grpc.NewServer()
-	pb.RegisterUserServer(s, &userService{})
+	pbuser.RegisterUserServer(s, &userService{})
+	pbbook.RegisterBookServer(s, &bookService{})
 
 	if err := s.Serve(lis); err != nil {
 		log.Fatalf("failed to serve: %v", err)

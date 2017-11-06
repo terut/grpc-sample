@@ -8,7 +8,8 @@ import (
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 
-	gw "github.com/terut/grpc-sample/proto"
+	gwbook "github.com/terut/grpc-sample/proto/book"
+	gwuser "github.com/terut/grpc-sample/proto/user"
 )
 
 func main() {
@@ -16,11 +17,15 @@ func main() {
 
 	mux := runtime.NewServeMux()
 	opts := []grpc.DialOption{grpc.WithInsecure()}
-	err := gw.RegisterUserHandlerFromEndpoint(ctx, mux, "localhost:9090", opts)
+	err := gwuser.RegisterUserHandlerFromEndpoint(ctx, mux, "localhost:9090", opts)
 	if err != nil {
 		log.Println("failed to register endpoint")
 	}
-	if err := http.ListenAndServe(":8080", mux); err != nil {
+	err = gwbook.RegisterBookHandlerFromEndpoint(ctx, mux, "localhost:9090", opts)
+	if err != nil {
+		log.Println("failed to register endpoint")
+	}
+	if err = http.ListenAndServe(":8080", mux); err != nil {
 		log.Println("failed to register endpoint")
 	}
 }
